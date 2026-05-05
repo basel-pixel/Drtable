@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج الإنذار المبكر (EWS) - مستشفى صيدناوي</title>
+    <style>
+        :root {
+            --primary-blue: #004693; /* لون أزرق مستوحى من اللوجو */
+            --bg-color: #f9fbfd;
+            --card-bg: #ffffff;
+            --text-main: #12263f;
+            --border-color: #e3ebf6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* تنسيق الهيدر مع اللوجو */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 15px;
+        }
+
+        .logo-container {
+            text-align: left;
+        }
+
+        /* تنسيق كلمة "مستشفى" الصغيرة */
+        .hospital-text {
+            font-size: 12px;
+            color: var(--primary-blue);
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* تنسيق كلمة "صيدناوي" الكبيرة */
+        .sidnawy-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: -5px 0 0 0;
+            line-height: 1;
+            font-family: 'Cairo', sans-serif; /* يمكنك استخدام خط عربي عريض */
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            margin: 0;
+            font-size: 20px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* باقي التنسيقات (كما في الكود السابق) */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        input[type="number"], select {
+            width: 100%; padding: 10px; border: 1px solid var(--border-color);
+            border-radius: 6px; font-size: 16px; box-sizing: border-box;
+        }
+        button {
+            width: 100%; background-color: var(--primary-blue); color: white;
+            border: none; padding: 14px; border-radius: 6px; font-size: 16px;
+            font-weight: bold; cursor: pointer; margin-top: 15px;
+        }
+        #result-container {
+            margin-top: 25px; padding: 20px; border-radius: 8px; display: none;
+            border: 1px solid #ccc; text-align: center;
+        }
+        .score-display { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+        .action-display { font-size: 16px; line-height: 1.6; font-weight: 600; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>نموذج الإنذار المبكر (EWS)</h1>
+        <div class="logo-container">
+            <p class="hospital-text">مستشفى</p>
+            <p class="sidnawy-text">صيدناوي</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="oxygen">هل المريض موصل بالأكسجين؟</label>
+        <select id="oxygen">
+            <option value="0">لا</option>
+            <option value="2">نعم (يتم إضافة درجتين)</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="resp">معدل التنفس (دورة/دقيقة)</label>
+        <input type="number" id="resp" placeholder="أدخل معدل التنفس...">
+    </div>
+    <div class="form-group">
+        <label for="spo2">نسبة الأكسجين SPO2 (%)</label>
+        <input type="number" id="spo2" placeholder="أدخل نسبة الأكسجين...">
+    </div>
+    <div class="form-group">
+        <label for="pulse">النبض (نبضة/دقيقة)</label>
+        <input type="number" id="pulse" placeholder="أدخل سرعة النبض...">
+    </div>
+    <div class="form-group">
+        <label for="temp">درجة الحرارة (مئوية)</label>
+        <input type="number" id="temp" step="0.1" placeholder="أدخل درجة الحرارة...">
+    </div>
+    <div class="form-group">
+        <label for="sbp">ضغط الدم الانقباضي (الرقم العلوي)</label>
+        <input type="number" id="sbp" placeholder="أدخل ضغط الدم الانقباضي...">
+    </div>
+    <div class="form-group">
+        <label for="avpu">مقياس الوعي (AVPU)</label>
+        <select id="avpu">
+            <option value="0">واعي تماماً</option>
+            <option value="3">يستجيب للألم / يستجيب للكلام / غير واعي</option>
+        </select>
+    </div>
+
+    <button onclick="calculateEWS()">احسب النتيجة والإجراء المطلوب</button>
+
+    <div id="result-container">
+        <div class="score-display" id="total-score"></div>
+        <div class="action-display" id="nursing-action"></div>
+    </div>
+</div>
+
+<script>
+    // نفس كود الجافا سكريبت السابق بدون تغيير
+    function calculateEWS() {
+        let o2 = parseInt(document.getElementById('oxygen').value);
+        let resp = parseFloat(document.getElementById('resp').value) || 0;
+        let spo2 = parseFloat(document.getElementById('spo2').value) || 0;
+        let pulse = parseFloat(document.getElementById('pulse').value) || 0;
+        let temp = parseFloat(document.getElementById('temp').value) || 0;
+        let sbp = parseFloat(document.getElementById('sbp').value) || 0;
+        let avpu = parseInt(document.getElementById('avpu').value);
+
+        let maxSingleScore = 0;
+        let totalScore = o2 + avpu;
+        if(avpu === 3) maxSingleScore = 3;
+
+        // Respiratory Rate
+        let respScore = 0;
+        if (resp <= 8 || resp >= 25) respScore = 3;
+        else if (resp >= 21 && resp <= 24) respScore = 2;
+        else if (resp >= 9 && resp <= 11) respScore = 1;
+        totalScore += respScore; maxSingleScore = Math.max(maxSingleScore, respScore);
+
+        // SPO2
+        let spo2Score = 0;
+        if (spo2 <= 91) spo2Score = 3;
+        else if (spo2 >= 92 && spo2 <= 93) spo2Score = 2;
+        else if (spo2 >= 94 && spo2 <= 95) spo2Score = 1;
+        totalScore += spo2Score; maxSingleScore = Math.max(maxSingleScore, spo2Score);
+
+        // Pulse
+        let pulseScore = 0;
+        if (pulse <= 40 || pulse >= 131) pulseScore = 3;
+        else if (pulse >= 111 && pulse <= 130) pulseScore = 2;
+        else if ((pulse >= 41 && pulse <= 50) || (pulse >= 91 && pulse <= 110)) pulseScore = 1;
+        totalScore += pulseScore; maxSingleScore = Math.max(maxSingleScore, pulseScore);
+
+        // Temperature
+        let tempScore = 0;
+        if (temp <= 35) tempScore = 3;
+        else if (temp >= 39.1) tempScore = 2;
+        else if ((temp >= 35.1 && temp <= 36.0) || (temp >= 38.1 && temp <= 39.0)) tempScore = 1;
+        totalScore += tempScore; maxSingleScore = Math.max(maxSingleScore, tempScore);
+
+        // Systolic Blood Pressure
+        let sbpScore = 0;
+        if (sbp <= 90 || sbp >= 220) sbpScore = 3;
+        else if ((sbp >= 91 && sbp <= 100) || (sbp >= 200 && sbp <= 219)) sbpScore = 2;
+        else if (sbp >= 101 && sbp <= 110) sbpScore = 1;
+        totalScore += sbpScore; maxSingleScore = Math.max(maxSingleScore, sbpScore);
+
+        let resultContainer = document.getElementById('result-container');
+        let scoreDisplay = document.getElementById('total-score');
+        let actionDisplay = document.getElementById('nursing-action');
+        
+        resultContainer.style.display = "block";
+        scoreDisplay.innerHTML = "إجمالي النقاط: " + totalScore;
+
+        if (totalScore >= 7 || maxSingleScore === 3) {
+            resultContainer.style.backgroundColor = "#fecaca"; resultContainer.style.color = "#991b1b";
+            actionDisplay.innerHTML = "<strong>إجراء عاجل:</strong> (أكثر من أو يساوي 7 أو 3 في أي جزئية) <br>1- تقوم الممرضة بنداء فريق الاستجابة السريعة RRT.<br>2- ثم تقوم باستدعاء طبيب القسم فوراً.";
+        } 
+        else if (totalScore >= 5 && totalScore <= 6) {
+            resultContainer.style.backgroundColor = "#bfdbfe"; resultContainer.style.color = "#1e3a8a";
+            actionDisplay.innerHTML = "<strong>إجراء تحذيري:</strong> (النتيجة 5-6) <br>تقوم ممرضة الحالة بإبلاغ طبيب القسم لتقييم المريض.<br>يعاد تقييم المريض بواسطة الممرضة كل <strong>ساعة</strong>.";
+        } 
+        else {
+            resultContainer.style.backgroundColor = "#dcfce7"; resultContainer.style.color = "#166534";
+            actionDisplay.innerHTML = "<strong>متابعة دورية:</strong> (النتيجة 0-4) <br>يعاد تقييم المريض كل <strong>6 ساعات</strong>.";
+        }
+    }
+</script>
+
+</body>
+</html>
