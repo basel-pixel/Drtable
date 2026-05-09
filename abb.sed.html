@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الاختصارات الطبية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --primary-blue: #0056b3; /* لون أزرق مخصص لاسم المستشفى */
+            --allowed: #27ae60;
+            --forbidden: #e67e22; 
+            --not-listed: #c0392b; 
+            --bg: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .hospital-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        
+        /* تنسيق كلمة "مستشفى" الصغيرة */
+        .hospital-text {
+            font-size: 16px;
+            color: var(--primary-blue);
+            margin: 0;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+        /* تنسيق كلمة "صيدناوي" الكبيرة */
+        .sidnawy-text {
+            font-size: 38px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0;
+            line-height: 1;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .dept-title {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+        
+        .rules-box {
+            background-color: #fdf2f2;
+            border: 1px solid var(--not-listed);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .rules-title {
+            font-weight: bold;
+            color: var(--not-listed);
+            margin-bottom: 10px;
+        }
+        .rules-text { font-size: 14px; }
+
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .result-card {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .status-allowed {
+            border-right: 5px solid var(--allowed);
+            background-color: #e9f7ef;
+        }
+        .status-forbidden {
+            border-right: 5px solid var(--forbidden);
+            background-color: #fcf3e8;
+        }
+        .status-not-listed {
+            border-right: 5px solid var(--not-listed);
+            background-color: #fdf2f2;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            width: fit-content;
+        }
+        .badge-allowed { background-color: var(--allowed); }
+        .badge-forbidden { background-color: var(--forbidden); }
+        .badge-not-listed { background-color: var(--not-listed); }
+        
+        .term { font-size: 18px; font-weight: bold; direction: ltr; text-align: left;}
+        .meaning { font-size: 16px; }
+        .best-practice {
+            font-size: 14px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed var(--forbidden);
+            margin-top: 5px;
+        }
+        .counter { text-align: left; color: #7f8c8d; font-size: 14px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="header-section">
+        <img src="Picture1.png" alt="شعار المستشفى" class="hospital-logo" onerror="this.style.display='none'">
+        <div>
+            <p class="hospital-text">مستشفى</p>
+            <div class="sidnawy-text">صيدناوي</div>
+            <div class="dept-title">فريق الجودة وسلامة المرضى</div>
+        </div>
+    </div>
+    
+    <div class="rules-box">
+        <div class="rules-title">قواعد هامة لسلامة المرضى والتوثيق الطبي</div>
+        <div class="rules-text">
+            <p style="margin-top: 0;">يُرجى العلم بأن أي اختصار <strong>غير موجود</strong> في قائمة الاختصارات المسموحة (الخضراء) يُعتبر تلقائياً اختصاراً ممنوعاً، ويجب تجنب استخدامه في الوثائق الطبية.</p>
+            
+            <div style="background-color: #ffeaea; padding: 10px; border-radius: 5px; border-right: 4px solid #c0392b; margin-top: 15px; text-align: right;">
+                <strong style="color: #c0392b;">⚠️ تنبيه هام (حظر تام):</strong>
+                <p style="margin: 5px 0;">يُمنع استخدام أي اختصارات طبية نهائياً <strong>(حتى الاختصارات المسموحة)</strong> ويجب كتابة الكلمات كاملة في الحالات التالية:</p>
+                <ul style="margin: 5px 0 0 0; padding-right: 20px; font-weight: bold; color: #c0392b;">
+                    <li>إقرارات الموافقة المستنيرة بجميع أنواعها.</li>
+                    <li>عند كتابة كروت متابعة العمليات.</li>
+                    <li>التقارير والملخصات الطبية التي يتم تسليمها للمريض أو ذويه عند الخروج.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <input type="text" id="searchInput" class="search-box" placeholder="ابحث بالاختصار (مثل: ABG) أو المعنى (مثل: Unit)...">
+    <div id="resultCount" class="counter">جاري التحميل...</div>
+    <div id="results"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const medicalData = [
+        /* الاختصارات المسموحة */
+        { abbr: "AAA", meaning: "Abdominal Aortic Aneurysm", status: "مسموح", note: "" },
+        { abbr: "ABG", meaning: "Arterial blood gases", status: "مسموح", note: "" },
+        { abbr: "ACLS", meaning: "Advanced cardiac life support", status: "مسموح", note: "" },
+        { abbr: "ACPC", meaning: "Assisted control pressure control", status: "مسموح", note: "" },
+        { abbr: "ACS", meaning: "Acute coronary syndrome", status: "مسموح", note: "" },
+        { abbr: "Active assiss Exs", meaning: "Active assisted exercises", status: "مسموح", note: "" },
+        { abbr: "Active Resis Exs", meaning: "Active resisted exercises", status: "مسموح", note: "" },
+        { abbr: "ACVC", meaning: "Assisted control volume control", status: "مسموح", note: "" },
+        { abbr: "ADL", meaning: "Activity of daily life", status: "مسموح", note: "" },
+        { abbr: "AF", meaning: "Atrial Fibrillation", status: "مسموح", note: "" },
+        { abbr: "AIDS", meaning: "Acquired immune deficiency syndrome", status: "مسموح", note: "" },
+        { abbr: "AKI", meaning: "Acute kidney injury", status: "مسموح", note: "" },
+        { abbr: "ALB", meaning: "Albumin", status: "مسموح", note: "" },
+        { abbr: "ALL", meaning: "Acute Lymphocytic Leukemia", status: "مسموح", note: "" },
+        { abbr: "ALP", meaning: "Alkaline phosphatase", status: "مسموح", note: "" },
+        { abbr: "ALS", meaning: "Advanced life support", status: "مسموح", note: "" },
+        { abbr: "ALT", meaning: "Alanine aminotransferase", status: "مسموح", note: "" },
+        { abbr: "Am/amal", meaning: "Amalgam", status: "مسموح", note: "" },
+        { abbr: "AMI", meaning: "Acute myocardial infarction", status: "مسموح", note: "" },
+        { abbr: "ANA", meaning: "Antinuclear Antibody", status: "مسموح", note: "" },
+        { abbr: "APTT", meaning: "Activated Partial Thromboplastin Time", status: "مسموح", note: "" },
+        { abbr: "ARDS", meaning: "Adult Respiratory Distress Syndrome", status: "مسموح", note: "" },
+        { abbr: "ASD", meaning: "Atrial Septal Defect", status: "مسموح", note: "" },
+        { abbr: "ASOT", meaning: "Anti-streptolysin o titer", status: "مسموح", note: "" },
+        { abbr: "AST", meaning: "Aspartate aminotransferase", status: "مسموح", note: "" },
+        { abbr: "BA", meaning: "Bronchial Asthma", status: "مسموح", note: "" },
+        { abbr: "BAL", meaning: "Broncho alveolar lavage", status: "مسموح", note: "" },
+        { abbr: "BBB", meaning: "Bundle Branch Block", status: "مسموح", note: "" },
+        { abbr: "Be", meaning: "Base Excess", status: "مسموح", note: "" },
+        { abbr: "BEAE", meaning: "Bilateral equal air entry", status: "مسموح", note: "" },
+        { abbr: "BIPAP", meaning: "Bi-level positive airway pressure", status: "مسموح", note: "" },
+        { abbr: "BLS", meaning: "Basic life support", status: "مسموح", note: "" },
+        { abbr: "BMI", meaning: "Body mass index", status: "مسموح", note: "" },
+        { abbr: "BP", meaning: "Blood Pressure", status: "مسموح", note: "" },
+        { abbr: "BPH", meaning: "Benign Prostatic Hypertrophy", status: "مسموح", note: "" },
+        { abbr: "BUN", meaning: "Blood urea Nitrogen", status: "مسموح", note: "" },
+        { abbr: "C & S", meaning: "Culture & Sensitivity", status: "مسموح", note: "" },
+        { abbr: "C/O", meaning: "Complaint Of", status: "مسموح", note: "" },
+        { abbr: "CA", meaning: "Calcium", status: "مسموح", note: "" },
+        { abbr: "Ca I Ca 2+", meaning: "Calcium ionized", status: "مسموح", note: "" },
+        { abbr: "Ca T", meaning: "Calcium total", status: "مسموح", note: "" },
+        { abbr: "CABG", meaning: "Coronary Artery Bypass Graft", status: "مسموح", note: "" },
+        { abbr: "CAD", meaning: "Coronary Artery Disease", status: "مسموح", note: "" },
+        { abbr: "CAP", meaning: "Community acquired pneumonia", status: "مسموح", note: "" },
+        { abbr: "Cap", meaning: "Capsule", status: "مسموح", note: "" },
+        { abbr: "CAUTI", meaning: "Catheter associated urinary tract infection", status: "مسموح", note: "" },
+        { abbr: "CBC", meaning: "Complete blood count", status: "مسموح", note: "" },
+        { abbr: "CBD", meaning: "Common Bile Duct", status: "مسموح", note: "" },
+        { abbr: "CBG", meaning: "Capillary Blood glucose", status: "مسموح", note: "" },
+        { abbr: "CCC", meaning: "Chronic calcular cholecystitis", status: "مسموح", note: "" },
+        { abbr: "CCU", meaning: "Coronary care unit", status: "مسموح", note: "" },
+        { abbr: "CEA", meaning: "Carcinoembryonic Antigen", status: "مسموح", note: "" },
+        { abbr: "CHD", meaning: "Congenital heart disease", status: "مسموح", note: "" },
+        { abbr: "CHF", meaning: "Congestive heart failure", status: "مسموح", note: "" },
+        { abbr: "Chol", meaning: "Cholesterol", status: "مسموح", note: "" },
+        { abbr: "CKD", meaning: "Chronic kidney disease", status: "مسموح", note: "" },
+        { abbr: "CLABSI", meaning: "Central line associated bloodstream infection", status: "مسموح", note: "" },
+        { abbr: "CLD", meaning: "Chronic liver disease", status: "مسموح", note: "" },
+        { abbr: "Cm", meaning: "Centimeters", status: "مسموح", note: "" },
+        { abbr: "CML", meaning: "Chronic Myelogenous Leukaemia", status: "مسموح", note: "" },
+        { abbr: "CMV", meaning: "Cytomegalovirus", status: "مسموح", note: "" },
+        { abbr: "CNS", meaning: "Central Nervous System", status: "مسموح", note: "" },
+        { abbr: "Comp", meaning: "Composite", status: "مسموح", note: "" },
+        { abbr: "COP", meaning: "Cardiac output", status: "مسموح", note: "" },
+        { abbr: "COPD", meaning: "Chronic obstructive lung disease", status: "مسموح", note: "" },
+        { abbr: "CP", meaning: "Cerebral Palsy", status: "مسموح", note: "" },
+        { abbr: "CPAP", meaning: "Continuous positive airway pressure", status: "مسموح", note: "" },
+        { abbr: "CPK", meaning: "Creatinine Phosphokinase", status: "مسموح", note: "" },
+        { abbr: "CRP", meaning: "C- Reactive protein", status: "مسموح", note: "" },
+        { abbr: "CPR", meaning: "Cardiopulmonary Resuscitation", status: "مسموح", note: "" },
+        { abbr: "CR", meaning: "Crown", status: "مسموح", note: "" },
+        { abbr: "CRF", meaning: "Chronic Renal Failure", status: "مسموح", note: "" },
+        { abbr: "CS", meaning: "Cesarean section", status: "مسموح", note: "" },
+        { abbr: "CSF", meaning: "Cerebrospinal Fluid", status: "مسموح", note: "" },
+        { abbr: "CT", meaning: "Computed Tomography", status: "مسموح", note: "" },
+        { abbr: "СТРА", meaning: "Computed Tomography of pulmonary artery", status: "مسموح", note: "" },
+        { abbr: "CTUT", meaning: "Computed Tomography of urinary tract", status: "مسموح", note: "" },
+        { abbr: "CUA", meaning: "Complete Urine Analysis", status: "مسموح", note: "" },
+        { abbr: "CVA", meaning: "Cerebrovascular Accident", status: "مسموح", note: "" },
+        { abbr: "CVC", meaning: "Central Venous Catheter", status: "مسموح", note: "" },
+        { abbr: "CVL", meaning: "Central Venous Line", status: "مسموح", note: "" },
+        { abbr: "CVP", meaning: "Central Venous Pressure", status: "مسموح", note: "" },
+        { abbr: "CVS", meaning: "Cardiovascular System", status: "مسموح", note: "" },
+        { abbr: "CXR", meaning: "Chest x ray", status: "مسموح", note: "" },
+        { abbr: "DCM", meaning: "Dilated cardiomyopathy", status: "مسموح", note: "" },
+        { abbr: "DCL", meaning: "Disturbed Conscious Level", status: "مسموح", note: "" },
+        { abbr: "DIC", meaning: "Disseminated Intravascular Coagulation", status: "مسموح", note: "" },
+        { abbr: "DKA", meaning: "Diabetic ketoacidosis", status: "مسموح", note: "" },
+        { abbr: "AKA", meaning: "Alcoholic ketoacidosis", status: "مسموح", note: "" },
+        { abbr: "DM", meaning: "Diabetes millets", status: "مسموح", note: "" },
+        { abbr: "DTP", meaning: "Diphtheria, Tetanus, Pertussis", status: "مسموح", note: "" },
+        { abbr: "DTENS", meaning: "Deep transcutaneous electrical nerve stimulation", status: "مسموح", note: "" },
+        { abbr: "DVT", meaning: "Deep venous thrombosis", status: "مسموح", note: "" },
+        { abbr: "DX", meaning: "Diagnosis", status: "مسموح", note: "" },
+        { abbr: "EBV", meaning: "Epstein-bar virus", status: "مسموح", note: "" },
+        { abbr: "ECG", meaning: "Electrocardiogram", status: "مسموح", note: "" },
+        { abbr: "ECHO", meaning: "Echocardiography", status: "مسموح", note: "" },
+        { abbr: "EEG", meaning: "Electroencephalogram", status: "مسموح", note: "" },
+        { abbr: "ETT", meaning: "Endotracheal tube", status: "مسموح", note: "" },
+        { abbr: "EMG", meaning: "Electromyogram", status: "مسموح", note: "" },
+        { abbr: "ENDO", meaning: "Endodontic", status: "مسموح", note: "" },
+        { abbr: "ENT", meaning: "Ear, Nose and Throat", status: "مسموح", note: "" },
+        { abbr: "ERCP", meaning: "Endoscopic Retrograde Cholangiopancreatography", status: "مسموح", note: "" },
+        { abbr: "ESR", meaning: "Erythrocyte sedimentation rate", status: "مسموح", note: "" },
+        { abbr: "ESRD", meaning: "End stage renal disease", status: "مسموح", note: "" },
+        { abbr: "ET", meaning: "Endotracheal Tube", status: "مسموح", note: "" },
+        { abbr: "ex", meaning: "exercise", status: "مسموح", note: "" },
+        { abbr: "Ext", meaning: "Extraction", status: "مسموح", note: "" },
+        { abbr: "FB", meaning: "Foreign Body", status: "مسموح", note: "" },
+        { abbr: "FBS", meaning: "Fasting blood sugar", status: "مسموح", note: "" },
+        { abbr: "FC", meaning: "Fully conscious", status: "مسموح", note: "" },
+        { abbr: "FDP", meaning: "Fibrinogen Degradation Products", status: "مسموح", note: "" },
+        { abbr: "FEV", meaning: "Forced Expiratory Volume", status: "مسموح", note: "" },
+        { abbr: "FFP", meaning: "Fresh Frozen Plasma", status: "مسموح", note: "" },
+        { abbr: "Fill", meaning: "Filling", status: "مسموح", note: "" },
+        { abbr: "FiO2", meaning: "Fraction of Inspired Oxygen", status: "مسموح", note: "" },
+        { abbr: "FIV", meaning: "Forced Inspiratory Volume", status: "مسموح", note: "" },
+        { abbr: "FSH", meaning: "Follicle stimulating hormone", status: "مسموح", note: "" },
+        { abbr: "FT3", meaning: "Free Triiodothyronine", status: "مسموح", note: "" },
+        { abbr: "FT4", meaning: "Free thyroxine", status: "مسموح", note: "" },
+        { abbr: "FUO", meaning: "Fever of unknown origin", status: "مسموح", note: "" },
+        { abbr: "Fx", meaning: "Fracture", status: "مسموح", note: "" },
+        { abbr: "G6PD", meaning: "Glucose 6 phosphate dehydrogenase deficiency", status: "مسموح", note: "" },
+        { abbr: "GCS", meaning: "Glasgow coma scale", status: "مسموح", note: "" },
+        { abbr: "GERD", meaning: "Gastroesophageal -Reflux disease", status: "مسموح", note: "" },
+        { abbr: "GFR", meaning: "Glomerular Filtration Rate", status: "مسموح", note: "" },
+        { abbr: "GGO", meaning: "Ground glass opacity", status: "مسموح", note: "" },
+        { abbr: "GI", meaning: "Gastro-intestinal", status: "مسموح", note: "" },
+        { abbr: "HAP", meaning: "Hospital Acquired pneumonia", status: "مسموح", note: "" },
+        { abbr: "HAV", meaning: "Hepatitis A virus", status: "مسموح", note: "" },
+        { abbr: "Hb", meaning: "Hemoglobin", status: "مسموح", note: "" },
+        { abbr: "HbA1c", meaning: "Glycosylated Hemoglobin", status: "مسموح", note: "" },
+        { abbr: "HbsAg", meaning: "Hepatitis B Surface Antigen", status: "مسموح", note: "" },
+        { abbr: "HBV", meaning: "Hepatitis B Virus", status: "مسموح", note: "" },
+        { abbr: "HCC", meaning: "Hepatocellular carcinoma", status: "مسموح", note: "" },
+        { abbr: "HCT", meaning: "Hematocrit", status: "مسموح", note: "" },
+        { abbr: "HCV", meaning: "Hepatitis C virus", status: "مسموح", note: "" },
+        { abbr: "HFNC", meaning: "High flow nasal canula", status: "مسموح", note: "" },
+        { abbr: "HFNO", meaning: "High flow nasal oxygen", status: "مسموح", note: "" },
+        { abbr: "He", meaning: "Hemorrhage", status: "مسموح", note: "" },
+        { abbr: "HIV", meaning: "Human immunodeficiency virus", status: "مسموح", note: "" },
+        { abbr: "HPV", meaning: "Human papilloma virus", status: "مسموح", note: "" },
+        { abbr: "HR", meaning: "Heart rate", status: "مسموح", note: "" },
+        { abbr: "Hr", meaning: "Hour", status: "مسموح", note: "" },
+        { abbr: "HRS", meaning: "Hepatorenal syndrome", status: "مسموح", note: "" },
+        { abbr: "HSV", meaning: "Herpes Simplex Virus", status: "مسموح", note: "" },
+        { abbr: "HTN", meaning: "Hypertension", status: "مسموح", note: "" },
+        { abbr: "HUS", meaning: "Hemolytic uremic syndrome", status: "مسموح", note: "" },
+        { abbr: "Hx", meaning: "History", status: "مسموح", note: "" },
+        { abbr: "IBW", meaning: "Ideal body weight", status: "مسموح", note: "" },
+        { abbr: "ICH", meaning: "Intracranial hemorrhage", status: "مسموح", note: "" },
+        { abbr: "ICM", meaning: "Ischemic cardiomyopathy", status: "مسموح", note: "" },
+        { abbr: "ICU", meaning: "Intensive care unit", status: "مسموح", note: "" },
+        { abbr: "IDDM", meaning: "Insulin dependent diabetes millets", status: "مسموح", note: "" },
+        { abbr: "IHD", meaning: "Ischemic heart disease", status: "مسموح", note: "" },
+        { abbr: "INR", meaning: "International normalized ratio", status: "مسموح", note: "" },
+        { abbr: "IR", meaning: "Infra-red radiation", status: "مسموح", note: "" },
+        { abbr: "IVH", meaning: "Interventricular hemorrhage", status: "مسموح", note: "" },
+        { abbr: "IVIg", meaning: "Intravenous immunoglobulin", status: "مسموح", note: "" },
+        { abbr: "JL", meaning: "Jugular line", status: "مسموح", note: "" },
+        { abbr: "K", meaning: "Potassium", status: "مسموح", note: "" },
+        { abbr: "KFTs", meaning: "Kidney function tests", status: "مسموح", note: "" },
+        { abbr: "LFTs", meaning: "Liver function tests", status: "مسموح", note: "" },
+        { abbr: "L", meaning: "Lower", status: "مسموح", note: "" },
+        { abbr: "LA", meaning: "Lower anterior", status: "مسموح", note: "" },
+        { abbr: "LL", meaning: "Lower left", status: "مسموح", note: "" },
+        { abbr: "Loc", meaning: "Local anesthesia", status: "مسموح", note: "" },
+        { abbr: "LP", meaning: "Lumbar puncture", status: "مسموح", note: "" },
+        { abbr: "LR", meaning: "Lower right", status: "مسموح", note: "" },
+        { abbr: "Mand", meaning: "Mandibular", status: "مسموح", note: "" },
+        { abbr: "Max", meaning: "Maxilla", status: "مسموح", note: "" },
+        { abbr: "MDR", meaning: "Multidrug resistant", status: "مسموح", note: "" },
+        { abbr: "MENS", meaning: "Microcurrent electrical nerve stimulation", status: "مسموح", note: "" },
+        { abbr: "MI", meaning: "Myocardial infarction", status: "مسموح", note: "" },
+        { abbr: "MMR", meaning: "Measels, Mumps, and rubella", status: "مسموح", note: "" },
+        { abbr: "MO", meaning: "Mediocre occlusal", status: "مسموح", note: "" },
+        { abbr: "MOD", meaning: "Mesio occluso distal", status: "مسموح", note: "" },
+        { abbr: "MP", meaning: "Moist pack", status: "مسموح", note: "" },
+        { abbr: "MRI", meaning: "Magnetic resonant imaging", status: "مسموح", note: "" },
+        { abbr: "MRSA", meaning: "Methicillin resistant staph aureus", status: "مسموح", note: "" },
+        { abbr: "MV", meaning: "Mechanical ventilation", status: "مسموح", note: "" },
+        { abbr: "Na", meaning: "Sodium", status: "مسموح", note: "" },
+        { abbr: "NA", meaning: "Not applicable", status: "مسموح", note: "" },
+        { abbr: "NAD", meaning: "No abnormality detected", status: "مسموح", note: "" },
+        { abbr: "NC", meaning: "Nasal cannula", status: "مسموح", note: "" },
+        { abbr: "NE", meaning: "Norepinephrine", status: "مسموح", note: "" },
+        { abbr: "NGT", meaning: "Nasogastric tube", status: "مسموح", note: "" },
+        { abbr: "NIDDM", meaning: "Non-insulin dependent diabetes mellitus", status: "مسموح", note: "" },
+        { abbr: "NIV", meaning: "Non-invasive ventilation", status: "مسموح", note: "" },
+        { abbr: "PD", meaning: "Periodontal debridement", status: "مسموح", note: "" },
+        { abbr: "PPV", meaning: "Positive pressure ventilation", status: "مسموح", note: "" },
+        { abbr: "NPO", meaning: "Nothing per os", status: "مسموح", note: "" },
+        { abbr: "NSAID", meaning: "Non-steroidal anti-inflammatory drus", status: "مسموح", note: "" },
+        { abbr: "PAUS", meaning: "Pelviabdominal ultrasound", status: "مسموح", note: "" },
+        { abbr: "PAW", meaning: "Airway pressure", status: "مسموح", note: "" },
+        { abbr: "PC", meaning: "Pressure control", status: "مسموح", note: "" },
+        { abbr: "PCI", meaning: "Percutaneous coronary intervention", status: "مسموح", note: "" },
+        { abbr: "PE", meaning: "Pulmonary embolism", status: "مسموح", note: "" },
+        { abbr: "PEEP", meaning: "Positive end expiratory pressure", status: "مسموح", note: "" },
+        { abbr: "PEG", meaning: "Poly ethylene glycol", status: "مسموح", note: "" },
+        { abbr: "PL", meaning: "Peripheral line", status: "مسموح", note: "" },
+        { abbr: "PLT", meaning: "Platelets", status: "مسموح", note: "" },
+        { abbr: "PPEAK", meaning: "Peak pressure", status: "مسموح", note: "" },
+        { abbr: "PPLAT", meaning: "Plateau pressure", status: "مسموح", note: "" },
+        { abbr: "PRN", meaning: "As needed", status: "مسموح", note: "" },
+        { abbr: "PSGN", meaning: "Post streptococcal glomeruli-nephritis", status: "مسموح", note: "" },
+        { abbr: "PT", meaning: "Prothrombin time", status: "مسموح", note: "" },
+        { abbr: "PTH", meaning: "Parathyroid hormone", status: "مسموح", note: "" },
+        { abbr: "PTT", meaning: "Partial thromboplastin time", status: "مسموح", note: "" },
+        { abbr: "RA", meaning: "Room air", status: "مسموح", note: "" },
+        { abbr: "RBCs", meaning: "Red blood cells", status: "مسموح", note: "" },
+        { abbr: "RBS", meaning: "Random blood sugar", status: "مسموح", note: "" },
+        { abbr: "RCT", meaning: "Root canal treatment", status: "مسموح", note: "" },
+        { abbr: "RHD", meaning: "Rheumatic heart disease", status: "مسموح", note: "" },
+        { abbr: "ROM", meaning: "Range of motion", status: "مسموح", note: "" },
+        { abbr: "RR", meaning: "Respiratory rate", status: "مسموح", note: "" },
+        { abbr: "RTA", meaning: "Road Traffic Accident", status: "مسموح", note: "" },
+        { abbr: "Rx", meaning: "Recipe", status: "مسموح", note: "" },
+        { abbr: "SBP", meaning: "Spontaneous bacterial peritonitis", status: "مسموح", note: "" },
+        { abbr: "SDH", meaning: "Subdural hemorrhage", status: "مسموح", note: "" },
+        { abbr: "SGPT", meaning: "Serum Glutamic Pyruvic Transaminase", status: "مسموح", note: "" },
+        { abbr: "SGOT", meaning: "Serum Glutamic-Oxaloacetic Transaminase", status: "مسموح", note: "" },
+        { abbr: "STD", meaning: "Sexually transmitted disease", status: "مسموح", note: "" },
+        { abbr: "Surg", meaning: "Surgery", status: "مسموح", note: "" },
+        { abbr: "SVT", meaning: "Supraventricular tachycardia", status: "مسموح", note: "" },
+        { abbr: "SW", meaning: "Short wave", status: "مسموح", note: "" },
+        { abbr: "S1", meaning: "Heart sound one", status: "مسموح", note: "" },
+        { abbr: "S2", meaning: "Heart sound two", status: "مسموح", note: "" },
+        { abbr: "tab", meaning: "Tablet", status: "مسموح", note: "" },
+        { abbr: "TB", meaning: "Tuberculosis", status: "مسموح", note: "" },
+        { abbr: "TD", meaning: "Transdermal", status: "مسموح", note: "" },
+        { abbr: "TEMP", meaning: "Temperature", status: "مسموح", note: "" },
+        { abbr: "TSH", meaning: "Thyroid stimulating hormone", status: "مسموح", note: "" },
+        { abbr: "TTP", meaning: "Thrombotic thrombocytopenic purpura", status: "مسموح", note: "" },
+        { abbr: "U", meaning: "Upper", status: "مسموح", note: "" },
+        { abbr: "UA", meaning: "Upper anterior", status: "مسموح", note: "" },
+        { abbr: "UL", meaning: "Upper left", status: "مسموح", note: "" },
+        { abbr: "UR", meaning: "Upper right", status: "مسموح", note: "" },
+        { abbr: "UOP", meaning: "Urine output", status: "مسموح", note: "" },
+        { abbr: "URI", meaning: "Upper respiratory infection", status: "مسموح", note: "" },
+        { abbr: "US", meaning: "Ultrasound", status: "مسموح", note: "" },
+        { abbr: "UTI", meaning: "Urinary tract infection", status: "مسموح", note: "" },
+        { abbr: "VBG", meaning: "Venous blood gases", status: "مسموح", note: "" },
+        { abbr: "VRE", meaning: "Vancomycin resistant enterococci", status: "مسموح", note: "" },
+        { abbr: "VRSA", meaning: "Vancomycin resistant staph aureus", status: "مسموح", note: "" },
+        { abbr: "VT", meaning: "Tidal volume", status: "مسموح", note: "" },
+        { abbr: "VTE", meaning: "Venous thromboembolism", status: "مسموح", note: "" },
+        { abbr: "WBCS", meaning: "White blood cells", status: "مسموح", note: "" },
+        { abbr: "XDR", meaning: "Extended spectrum resistant", status: "مسموح", note: "" },
+        { abbr: "ص", meaning: "صباحا", status: "مسموح", note: "" },
+        { abbr: "م", meaning: "مساء", status: "مسموح", note: "" },
+        { abbr: "ظ", meaning: "ظهرا", status: "مسموح", note: "" },
+        { abbr: "ن", meaning: "نبض", status: "مسموح", note: "" },
+        { abbr: "ح", meaning: "حرارة", status: "مسموح", note: "" },
+        { abbr: "ض", meaning: "ضغط", status: "مسموح", note: "" },
+        { abbr: "سم", meaning: "سنتيمتر", status: "مسموح", note: "" },
+        { abbr: "مل", meaning: "مليمتر", status: "مسموح", note: "" },
+        { abbr: "ق", meaning: "قرص", status: "مسموح", note: "" },
+        { abbr: "امبول", meaning: "امبول", status: "مسموح", note: "" },
+        { abbr: "م. ملح", meaning: "محلول ملح", status: "مسموح", note: "" },
+        { abbr: "ج", meaning: "جلوكوز %5", status: "مسموح", note: "" },
+        
+        /* الاختصارات الممنوعة صراحة (حسب ISMP) */
+        { abbr: "cct", meaning: "Cubic centimeters", status: "ممنوع", note: "يُساء فهمها كـ u (units)، البديل: استخدم mL" },
+        { abbr: "IU", meaning: "International unit(s)", status: "ممنوع", note: "يُساء فهمها كـ IV (وريدي) أو الرقم 10، البديل: اكتب unit(s) كاملة" },
+        { abbr: "ml", meaning: "Liter / Milliliter", status: "ممنوع", note: "حرف l الصغير يُساء فهمه كالرقم 1، البديل: استخدم L للتر و mL للمليلتر" },
+        { abbr: "MM أو M / M أو K", meaning: "Million / Thousand", status: "ممنوع", note: "يحدث خلط بين الآلاف والملايين، البديل: اكتب million أو thousand" },
+        { abbr: "Ng أو ng", meaning: "Nanogram", status: "ممنوع", note: "يُساء فهمها كـ mg أو أنبوب معدي (nasogastric)، البديل: استخدم nanogram" },
+        { abbr: "U أو u", meaning: "Unit(s)", status: "ممنوع", note: "يُساء فهمها كصفر أو 4، مما يسبب جرعة زائدة (مثال 4U تُقرأ 40)، البديل: اكتب unit(s)" },
+        { abbr: "μg", meaning: "Microgram", status: "ممنوع", note: "يُساء فهمها كـ mg، البديل: استخدم mcg" },
+        { abbr: "AD, AS, AU", meaning: "Right ear, left ear, each ear", status: "ممنوع", note: "يُساء فهمها كقطرات للعين (OD, OS, OU)، البديل: اكتب right ear, left ear, each ear" },
+        { abbr: "IN", meaning: "Intranasal", status: "ممنوع", note: "يُساء فهمها كـ IM أو IV، البديل: استخدم intranasal" },
+        { abbr: "IT", meaning: "Intrathecal", status: "ممنوع", note: "يُساء فهمها كاستنشاق أو intratumor، البديل: استخدم intrathecal" },
+        { abbr: "OD, OS, OU", meaning: "Right eye, left eye, each eye", status: "ممنوع", note: "يُساء فهمها كقطرات للأذن، البديل: اكتب right eye, left eye, each eye" },
+        { abbr: "Per os", meaning: "By mouth, orally", status: "ممنوع", note: "مقطع os يُساء فهمه كالعين اليسرى (OS)، البديل: استخدم PO أو orally" },
+        { abbr: "SC, SQ, sq, أو sub q", meaning: "Subcutaneous(ly)", status: "ممنوع", note: "يُساء فهمها كـ SL (تحت اللسان) أو every، البديل: استخدم SUBQ أو subcutaneous" },
+        { abbr: "o.d. أو OD", meaning: "Once daily", status: "ممنوع", note: "يُساء فهمها كالعين اليمنى (OD)، البديل: استخدم daily" },
+        { abbr: "Q.D., QD, q.d., أو qd", meaning: "Every day", status: "ممنوع", note: "يُساء فهمها كـ q.i.d. (أربع مرات)، البديل: استخدم daily" },
+        { abbr: "Qhst / Ont", meaning: "Nightly at bedtime", status: "ممنوع", note: "يُساء فهمها كـ qhr (كل ساعة)، البديل: استخدم QHS أو qhs" },
+        { abbr: "Q.O.D., QOD, q.o.d., أو qod", meaning: "Every other day", status: "ممنوع", note: "يُساء فهمها كـ qd أو qid، البديل: استخدم every other day" },
+        { abbr: "q1d", meaning: "Daily", status: "ممنوع", note: "يُساء فهمها كـ qid، البديل: استخدم daily" },
+        { abbr: "q6PM", meaning: "Every evening at 6 PM", status: "ممنوع", note: "يُساء فهمها كـ every 6 hours، البديل: استخدم daily at 6 PM" },
+        { abbr: "SSRI", meaning: "Sliding scale regular insulin", status: "ممنوع", note: "يُساء فهمها كمضادات الاكتئاب، البديل: استخدم sliding scale (insulin)" },
+        { abbr: "SSI", meaning: "Sliding scale insulin", status: "ممنوع", note: "يُساء فهمها كـ Strong Solution of Iodine، البديل: استخدم sliding scale (insulin)" },
+        { abbr: "TIW / BIW", meaning: "3 times a week / 2 times a week", status: "ممنوع", note: "يُساء فهمها كـ 3 مرات باليوم / مرتين باليوم، البديل: استخدم 3 times weekly / 2 times weekly" },
+        { abbr: "UD", meaning: "As directed", status: "ممنوع", note: "يُساء فهمها كـ unit dose، البديل: استخدم as directed" },
+        { abbr: "BBA / BGB", meaning: "Baby boy A / Baby girl B", status: "ممنوع", note: "خطأ في تحديد التوأم والجنس، البديل: استخدم اسم العائلة وجنس الطفل" },
+        { abbr: "D/C", meaning: "Discharge or discontinue", status: "ممنوع", note: "قد تؤدي لإيقاف الأدوية مبكرًا، البديل: استخدم discharge أو discontinue كاملة" },
+        { abbr: "IJ", meaning: "Injection", status: "ممنوع", note: "يُساء فهمها كـ IV، البديل: استخدم injection" },
+        { abbr: "OJ", meaning: "Orange juice", status: "ممنوع", note: "يُساء فهمها كقطرات عين (OD/OS)، البديل: استخدم orange juice" },
+        { abbr: "النقطة بعد الاختصار (مثال mg.)", meaning: "mg or mL", status: "ممنوع", note: "يُساء فهم النقطة كالرقم 1، البديل: استخدم mg, mL بدون نقطة بالنهاية" },
+        { abbr: "DOR, TAF, TDF", meaning: "Antiretroviral medications", status: "ممنوع", note: "حدوث خلط بين أدوية الفيروسات، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "APAP", meaning: "acetaminophen", status: "ممنوع", note: "غير معروف كـ acetaminophen، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "AT II / AT III", meaning: "angiotensin II / antithrombin III", status: "ممنوع", note: "يتم الخلط بينهما، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "AZT", meaning: "zidovudine", status: "ممنوع", note: "يُساء فهمها كـ azithromycin، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "CPZ", meaning: "Compazine", status: "ممنوع", note: "يُساء فهمها كـ chlorproMAZINE، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "DTO", meaning: "diluted tincture of opium", status: "ممنوع", note: "يُساء فهمها كـ tincture of opium، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "HCT / HCTZ", meaning: "hydrocortisone / hydroCHLOROthiazide", status: "ممنوع", note: "يتم الخلط بينهما، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "MgSO4", meaning: "magnesium sulfate", status: "ممنوع", note: "يُساء فهمها كـ morphine sulfate، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "MS, MSO4", meaning: "morphine sulfate", status: "ممنوع", note: "يُساء فهمها كـ magnesium sulfate، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "MTX", meaning: "methotrexate", status: "ممنوع", note: "يُساء فهمها كـ mitoXANTRONE، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "NOAC", meaning: "novel/new oral anticoagulant", status: "ممنوع", note: "يُساء فهمها كـ لا يوجد مضاد تخثر، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "OXY", meaning: "oxytocin", status: "ممنوع", note: "يُساء فهمها كـ oxyCODONE، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "PCA", meaning: "procainamide", status: "ممنوع", note: "يُساء فهمها كمسكنات، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "PIT", meaning: "Pitocin", status: "ممنوع", note: "يُساء فهمها كـ Pitressin، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "PNV", meaning: "prenatal vitamins", status: "ممنوع", note: "يُساء فهمها كـ penicillin VK، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "PTU", meaning: "propylthiouracil", status: "ممنوع", note: "يُساء فهمها كـ Purinethol، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "T3", meaning: "Tylenol with codeine No. 3", status: "ممنوع", note: "يُساء فهمها كـ liothyronine، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "TAC أو tac", meaning: "triamcinolone, tacrolimus", status: "ممنوع", note: "يتم الخلط بينهما، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "TNK", meaning: "TNKase", status: "ممنوع", note: "يُساء فهمها كـ TPA، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "TPA أو PA", meaning: "tissue plasminogen activator", status: "ممنوع", note: "يُساء فهمها كـ TNK أو TXA، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "TXA", meaning: "tranexamic acid", status: "ممنوع", note: "يُساء فهمها كـ TPA، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "ZnSO4", meaning: "zinc sulfate", status: "ممنوع", note: "يُساء فهمها كـ morphine sulfate، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "Nitro drip", meaning: "nitroglycerin infusion", status: "ممنوع", note: "يُساء فهمها كـ nitroprusside، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "IV vanc", meaning: "Intravenous vancomycin", status: "ممنوع", note: "يُساء فهمها كـ Invanz، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "Levo", meaning: "levofloxacin", status: "ممنوع", note: "يُساء فهمها كـ Levophed، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "Neo", meaning: "Neo-Synephrine", status: "ممنوع", note: "يُساء فهمها كـ neostigmine، البديل: اكتب اسم الدواء كاملاً" },
+        { abbr: "الأسماء المجمعة (مثال Banana bag)", meaning: "Coined names for compounded products", status: "ممنوع", note: "خطأ في المكونات، البديل: اكتب أسماء الأدوية كاملة" },
+        { abbr: "رقم مدمج (مثال 5-fluorouracil)", meaning: "Number embedded in drug name", status: "ممنوع", note: "يُساء فهم الرقم كأنه الجرعة الموصوفة، البديل: اكتب الاسم دون الرقم" },
+        { abbr: "1/2 tablet", meaning: "Half tablet", status: "ممنوع", note: "يُساء فهمها كـ 1 أو 2 قرص، البديل: استخدم كلمة half tablet" },
+        { abbr: "الأرقام الرومانية (مثال V)", meaning: "5", status: "ممنوع", note: "يُساء فهمها كحرف V أو الرقم 10، البديل: استخدم الأرقام العربية" },
+        { abbr: "عدم وجود صفر أولي (مثال .5)", meaning: "0.5 mg", status: "ممنوع", note: "يُساء فهمها كـ 5 mg، البديل: ضع صفراً قبل العلامة العشرية" },
+        { abbr: "الصفر الزائد (مثال 1.0)", meaning: "1 mg", status: "ممنوع", note: "يُساء فهمها كـ 10 mg، البديل: لا تستخدم أصفارًا زائدة" },
+        { abbr: "النسب (مثال 1:1,000)", meaning: "Ratio expression", status: "ممنوع", note: "خطأ في فهم الجرعة، البديل: استخدم الكمية لكل حجم" },
+        { abbr: "اسم الدواء متصل بالجرعة", meaning: "Drug name and dose run together", status: "ممنوع", note: "يُساء فهم الجرعة، البديل: الترم ب خانات النموذج" },
+        { abbr: "الجرعة متصلة بالوحدة", meaning: "Numerical dose and unit run together", status: "ممنوع", note: "يُساء فهمها بزيادة أصفار، البديل: التزم ب خانات النموذج" },
+        { abbr: "جرعات كبيرة بدون فواصل (100000)", meaning: "Large doses without commas", status: "ممنوع", note: "يُساء فهمها، البديل: استخدم الفواصل 100,000" },
+        { abbr: "3 أو رمز minim", meaning: "Dram / Minim", status: "ممنوع", note: "يُساء فهم الرموز كأرقام، البديل: استخدم النظام المتري (mL)" },
+        { abbr: "x1", meaning: "Administer once", status: "ممنوع", note: "يُساء فهمها كـ Administer 1، البديل: استخدم عبارة صريحة" },
+        { abbr: "> و <", meaning: "More than and less than", status: "ممنوع", note: "يحدث لبس مع الأرقام، البديل: استخدم الكلمات more/less than" },
+        { abbr: "↑ و ↓", meaning: "Increase and decrease", status: "ممنوع", note: "يُساء فهمها كحرف T أو أرقام، البديل: استخدم كلمتي increase/decrease" },
+        { abbr: "/", meaning: "Separates two doses", status: "ممنوع", note: "يُساء فهمها كالرقم 1، البديل: استخدم كلمة and" },
+        { abbr: "@ أو &", meaning: "At / And", status: "ممنوع", note: "يُساء فهمها كالرقم 2، البديل: استخدم كلمات at أو and" },
+        { abbr: "+", meaning: "Plus or and", status: "ممنوع", note: "يُساء فهمها كالرقم 4، البديل: استخدم plus" },
+        { abbr: "°", meaning: "Hour", status: "ممنوع", note: "يُساء فهمها كصفر، البديل: استخدم hr أو hour" },
+        { abbr: "Ø", meaning: "Zero", status: "ممنوع", note: "يُساء فهمها كأرقام أخرى، البديل: استخدم 0 أو zero" },
+        { abbr: "#", meaning: "Pound(s)", status: "ممنوع", note: "البديل: استخدم النظام المتري (kg)" },
+        { abbr: "gr, dr, min, oz, tsp, tbsp", meaning: "Apothecary or Household Abbreviations", status: "ممنوع", note: "غير آمنة طبيًا، البديل: استخدم النظام المتري حصراً" }
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const resultsDiv = document.getElementById('results');
+    const resultCount = document.getElementById('resultCount');
+
+    function displayResults(query) {
+        resultsDiv.innerHTML = '';
+        
+        if (!query || query.trim() === '') {
+            resultCount.innerHTML = `تم تحميل البيانات. ابدأ البحث...`;
+            return;
+        }
+
+        const lowerQuery = query.toLowerCase().trim();
+        
+        const filtered = medicalData.filter(item => {
+            const abbr = (item.abbr || "").toLowerCase();
+            const meaning = (item.meaning || "").toLowerCase();
+            return abbr.includes(lowerQuery) || meaning.includes(lowerQuery);
+        });
+
+        if (filtered.length === 0) {
+            resultCount.innerHTML = `نتيجة البحث عن: "${query}"`;
+            resultsDiv.innerHTML = `
+                <div class="result-card status-not-listed">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge badge-not-listed">ممنوع (غير مدرج)</span>
+                        <span class="term">${query}</span>
+                    </div>
+                    <div class="meaning"><strong>تنبيه:</strong> هذا الاختصار غير مدرج في قائمة المستشفى المعتمدة.</div>
+                    <div class="best-practice"><strong>⚠️ التوجيه الصحيح:</strong> بناءً على سياسة المستشفى، يُمنع استخدام أي اختصار غير مدرج بالقائمة المسموحة. يُرجى كتابة الكلمة كاملة لتجنب الأخطاء الطبية.</div>
+                </div>
+            `;
+            return;
+        }
+
+        resultCount.innerHTML = `عدد النتائج المطابقة: ${filtered.length}`;
+        let htmlContent = '';
+        
+        filtered.forEach(item => {
+            const isAllowed = item.status === "مسموح";
+            const cardClass = isAllowed ? 'status-allowed' : 'status-forbidden';
+            const badgeClass = isAllowed ? 'badge-allowed' : 'badge-forbidden';
+            
+            htmlContent += `
+                <div class="result-card ${cardClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge ${badgeClass}">${item.status}</span>
+                        <span class="term">${item.abbr}</span>
+                    </div>
+                    <div class="meaning"><strong>المعنى:</strong> ${item.meaning}</div>
+            `;
+
+            if (!isAllowed && item.note) {
+                htmlContent += `<div class="best-practice"><strong>⚠️ التوجيه الصحيح:</strong> ${item.note}</div>`;
+            }
+
+            htmlContent += `</div>`;
+        });
+        
+        resultsDiv.innerHTML = htmlContent;
+    }
+
+    displayResults("");
+
+    searchInput.addEventListener('input', function(e) {
+        displayResults(e.target.value);
+    });
+});
+</script>
+
+</body>
+</html>
